@@ -7,4 +7,14 @@
 #include <pthread.h>
 #include <sys/time.h>
 
+typedef struct s_generic
+{
+    int phil_num;
+    int mill_sec_to_die;
+    int mill_sec_to_eat;
+    int mill_sec_to_sleep;
+    int min_meal_to_stop;
+
+}               t_generic;
+
 #endif

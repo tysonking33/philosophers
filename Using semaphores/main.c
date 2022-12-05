@@ -14,7 +14,7 @@ int main()
     pthread_t T[5]; //each philospher has 1 thread
     for (i = 0; i < 5; i++)
     {
-        sem_init(&chopstick[i], 0, 1); //initalising the semaphore variables, w/ init value 1
+        sem_init(&chopstick[i], 0, 1); //initalising the semaphore variables, w/ init value of semaphore value = 1 (aka chopstick = free)
     }
     for (i = 0; i<5; i++)
     {
