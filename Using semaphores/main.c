@@ -25,6 +25,7 @@ int main()
     {
         pthread_join(T[i], NULL); //making the parent program wait for each thread to finish
     }
+    
 }
 
 void * philos(void * n)
