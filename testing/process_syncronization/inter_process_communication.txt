@@ -1,0 +1,35 @@
+2 types of process communication:
+	-	shared memory: some processes share variables
+	-	message passing: no shared memory
+
+method of message passing:
+	1.	establish communication linke (ignore if pre-existing)
+	2.	exchange messages use basic promatives
+		-	send(message, dest) or send(message)
+		-	receive(message, host) or recieve(message)
+
+Potentical sizes of message:
+	-	fixed size: easy of OS designer, hard for programmer
+	-	variable size: hard of OS designer, easy for programmer
+
+Components of typical message:
+	-	header: stores message type, destination id, source id, message length, control info
+		-	control infomation: contains info such as what to do when it runs out of buffer space, sequence number, priority (ususally FIFO)
+	-	body
+
+Type of communication links (CL):
+	-	Direct CL
+	-	indirect CL
+
+Criteria of communcation links (CL):
+	-	how are links established
+	-	# of process associated
+	-	# of links between each pair of communication processes
+	-	capacity: is size of the message the CL can accomidate fixed or variable
+	-	unidirectional or bi-directional CL
+
+Capacities of communication links (CL):
+	-	zero capacity: sender waits untill the reciever informs the send that is has recieved the message
+	-	non-zero capacity (bounded capacity and unbounded capacity): process does not know whether a message has been received or not after the send operation
+
+

@@ -9,3 +9,6 @@ mutex prolly model using (https://gist.github.com/theawless/88e78ba6979865e43289
 
 
 concurrency in c (https://www.classes.cs.uchicago.edu/archive/2018/spring/12300-1/lab6.html)
+
+
+learning about process synchronization (https://www.geeksforgeeks.org/introduction-of-process-synchronization/?ref=lbp)

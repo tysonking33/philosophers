@@ -1,0 +1,30 @@
+Structure of Critical Sections (CS):
+<Entry section>
+	[	Critical section	]
+<Exit section>
+	[	Remainder section	]
+
+Pseudocode of CS structure:
+do	{
+		flag = 1;
+		while (flag)			//entry section
+		{
+			...				//critical section
+		}
+		if (!flag)
+		{
+			...				//remainder section
+		}
+}	while(true)
+
+Solution to CS pseudocode:
+acquireLock();
+Process Critical Section
+releaselOCK();
+
+
+Key information:
+	-	threads must have locks before entering CS
+	-	lock are only aquired by 1 thread
+
+

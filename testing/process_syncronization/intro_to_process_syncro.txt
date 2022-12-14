@@ -1,0 +1,90 @@
+catergories of processes:
+	-	independent process: completing one process doesn't affect the other
+	-	cooperative process: processes can affect other processes
+		-	process synchronization problems occur here, because of resources shared being a problem
+
+race condition:
+	-	when 2+ processes access same code/memory/shared variables, causing the wrong output, but all involved process recognise the output as correct
+	-	can occur in critical sections, because results of multiple threads differ according to execution order
+
+Critical section:
+	-	code segment only accesable by 1 process at a time
+	-	contains shared vars that shoudl be in synch to maintaint data variable consistency
+
+Structure of critical section:
+do {
+	<entry section>
+		{	critical section	}
+	<remainder section>
+		{	remainder section	}
+}	while (TRUE)
+
+Critical section problem (CSP):
+	-	finding a way for cooperative process to accessed shared resources w/o data inconsistencies
+
+Requirements for solutions to critical section problems:
+	-	mutal exclusion: only 1 process excecutes at a time
+	-	progress: if no process are executing, only non-executing process in remainder section can decide which process will be next to enter the critcal section
+	-	bounded waiting: limit must exity for # of time another process can enter critcal section, after the current process has been given acces to enter the critical section
+
+Peterson's solution:
+	-	shared variables
+		- boolean flag[i]: init to FALSE, as initally noone wants to enter the crit section
+		- int turn: the process whose turn is to enter the crit section
+
+Structure of Peterson's solution:
+do {
+
+	flag[i] = TRUE;
+	turn = j;
+	while (flag[j] && turn == j)
+	
+		[	critical section	]
+	
+	flag[i] = FALSE;
+
+		[	remainder section	]
+
+}	while (TRUE);
+
+How does Peterson's solution adhere to the requirements of solutions for CSP:
+	-	mutual exclusion: 1 process per ciritcal section
+	-	process: process outside of critical sections don't block other processes fom entering critical section
+	-	bounded waiting: everty process has a fair chance
+
+Drawbacks of Peterson's soln:
+	-	busy waiting: wastes CPU cyceles, that can be used for other tasks
+	-	limited to 2 processes
+	-	not applicable in modern CPU archtecture
+
+Semaphores:
+	-	is signalling mechanism and a thread that can be signaled by other threads
+	-	uses 2 atomic operations (def. operations that can run independent of other processes), wait and signal
+	-	is an integer variable accessed only by: wait() and signal()
+
+Types of Semaphore:
+	-	Binary semaphore:
+		-	values: 0 or 1
+		-	aka mutex locks: providing mutal exclusion
+		-	method of Binary semaphore:
+			1.	all processes share the same mutex semaphore initalized to 1
+			2.	a process has to wait until loc = 0
+			3.	process makes mutex semaphore = 1
+			4.	process startes CS
+			5.	process completes CS
+			6.	mutex semaphore value reset to 0
+			7.	repeate 2 to 7 for other processes
+	-	counting semaphore:
+		-	values: any values
+		-	controls access to resources that have liiations of # of simulatenous access
+		-	method of Counting semaphore:
+			1.	semaphore initalized to number fo resource instances
+			2.	when process need to use resource, check if remaining_instances > 0
+			3.	process enters CS, remaining_instances--
+			4.	process finishes using resource, exits CS, remaining_instances++
+		
+Semaphores vs Mutex
+	-	semaphore
+		-	can be a thread that is waiting on a semaphore can be signaled by another thread
+	-	mutex
+		-	signaled only by the thread that is called the wait function.
