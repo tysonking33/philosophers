@@ -1,0 +1,18 @@
+Mutex:
+	-	locking mechanism to synchronize acess to a resource
+	-	allows for mutal exclusion (either producer or consumer can have the key and do work, the other has to wait)
+	-	1 thread per entire buffer
+
+Semaphore:
+	-	signaling mehnism
+	-	gernatlize mutex
+	-	Mutex's single bufffer 1 4kb buffer = Semaphore's multiple buffers 4 1kb buffers
+	-	Consumer and producer accan work on differnt buffers simultaneously
+
+Can a locked mutex be locked twice?
+	-	No, the mutex must be unlocked before locking again
+
+What happens if a non-recursive mutex is locked more that once?
+	-	Deadlock
+
+	

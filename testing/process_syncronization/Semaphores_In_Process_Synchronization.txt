@@ -1,0 +1,21 @@
+How to change semaphore vairables:
+P(Semaphore s){
+		while(S==0);			/*wait until s= 0
+	s--;
+}
+
+V(Semaphore s){
+	s++;
+}
+
+P and V operations:
+	-	P operation: aka wait/sleep/down operation
+	-	V operation: aka signal/wake-up/up operation
+	-	both P and V are atomic and semaphore is alway initalised to 1
+	-	Structure of P and V
+		//some code
+		P(s);
+			//critical section
+		V(s);
+			//remainder section
+

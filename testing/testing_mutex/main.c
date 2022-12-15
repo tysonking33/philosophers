@@ -1,31 +1,46 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include <unistd.h>
+#include "../includes/philosophers.h"
 
-sem_t chopstick[5]; //declare 5 semaphore variables, 1 per chopstick variable
-void *philos(void *);
-void eat(int);
-
-int main()
+int	main(int argc, char **argv)
 {
-    int i, n[5];
-    pthread_t T[5]; //each philospher has 1 thread
-    for (i = 0; i < 5; i++)
+    t_philo gen;
+    gen = (t_philo *)malloc(sizeof(t_philo));
+    if (!gen)
+        return 0;
+    if ((argc != 5) || (argc != 6))
     {
-        sem_init(&chopstick[i], 0, 1); //initalising the semaphore variables, w/ init value of semaphore value = 1 (aka chopstick = free)
+        error("invalid arguments");
     }
-    for (i = 0; i<5; i++)
+
+    gen->phil_num = argc[1];
+    gen->mill_sec_to_die = argc[2];
+    gen->mill_sec_to_eat = argc[3];
+    gen->mill_sec_to_sleep = argc[4];
+
+    if (argc == 6)
+        gen->min_meal_to_stop = argc[5];
+
+    pthread_mutex_t *chopstick[gen->phil_num];
+    int ctr = 0;
+    while (ctr < gen->phil_num)
     {
-        n[i] = i;
+        pthread_mutex_init(&chopstick[i], 1);
+        ctr++;
+    }
+    
+    int n[gen->phil_num];
+    pthread_t T[5]; //each philospher has 1 thread
+
+    ctr = 0;
+    while (ctr < gen->phil_num)
+    {
+        n[ctr] = ctr;
         pthread_create(&T[i], NULL, philos, (void *)&n[i]); //creating threads, 1 thread = 1 philospher
     }
+
     for (i = 0; i<5; i++)
     {
         pthread_join(T[i], NULL); //making the parent program wait for each thread to finish
     }
-    
 }
 
 void * philos(void * n)

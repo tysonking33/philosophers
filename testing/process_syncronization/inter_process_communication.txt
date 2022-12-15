@@ -18,8 +18,8 @@ Components of typical message:
 	-	body
 
 Type of communication links (CL):
-	-	Direct CL
-	-	indirect CL
+	-	Direct CL: used when proces use specifice process identifiers for communication, but hard to indentfy the sender ahead of time
+	-	indirect CL: done via port (shared mailbox), made of a queue of message
 
 Criteria of communcation links (CL):
 	-	how are links established
@@ -32,4 +32,49 @@ Capacities of communication links (CL):
 	-	zero capacity: sender waits untill the reciever informs the send that is has recieved the message
 	-	non-zero capacity (bounded capacity and unbounded capacity): process does not know whether a message has been received or not after the send operation
 
+Types of message passing:
+	-	Synchronous message passing: process blocking
+	-	Asynchronous message passing: process non-blocking
 
+Process blocking:
+	-	when a process is waiting for an event (e.g. resource avaiblity)
+	-	types of process blocking
+		-	blocking send: send will be blocked until the reciever recieves the message
+		-	blocking recieve: recieve is blocked until message is avaliable
+
+Process non-blocking:
+	-	sender sends message and continues
+	-	Non blocking recieve: reciever either recieves a valid message or null
+	-	more natureal
+
+Preferred combinations of processes:
+	1.	Blocking send & blocking receive
+	2.	Non-blocking send and non-blocking receive
+	3.	Non-blocking send and blocking recieve (Mostly used)
+
+
+Types of message passing:
+	-	Direct message passing (DMP): communicating process must explictly name the recipent or communicationn sender
+		-	e.g. send(p1, message)
+		-	CL (unidirectional or bi-directional) automatically established
+		-	1 CL per pair
+		-	Symmetry or asmmetry processes
+	-	Indirect message passing (IMP): using mailboxes/ports, each mailbox hase a unique id and process can only communicate if a mailbox is shared
+		-	CL are only established if there is a common mailbox
+		-	1+ CL (unidirectional or bi-directional) per pair
+		-	method of Indirect message passing
+			1.	create mailbox
+			2.	send and recieve message
+			3.	destroy mailbox
+		-	message primative examples
+			-	send(A, message)			//send the message to mailbox A
+
+Types of mailboxes (found in IMP):
+	-	Port: mutiple senders, 1 reciever
+		-	owned by receiving process, creates by OS at reciever's request
+	-	Muext mailbox: shared by n processes
+		-	1 process allowe to execute recieve
+		-	Method of Mutex Mailbox
+			1.	sender is non-blocking and sends message
+			2.	1st process executes recieving, enters Critical Section
+				-	other processes are blocking and waiting
