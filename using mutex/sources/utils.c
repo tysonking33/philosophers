@@ -54,7 +54,7 @@ void    init_threads(t_philo *gen){
 void *philos_werk(void *n)
 {
 	int phil = *(int *)n;
-	eating_time()
+	eating_time();
 		
 
 }
