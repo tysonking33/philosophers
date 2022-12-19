@@ -6,7 +6,7 @@ void error(char *s)
 	exit(1);
 }
 
-int	init_rules(t_philo *gen, int argc, char **argv){
+int	init_all(t_rules *gen, int argc, char **argv){
 	if (!gen)
 		return (0);
 	if ((argc != 5) || (argc != 6))
@@ -22,21 +22,45 @@ int	init_rules(t_philo *gen, int argc, char **argv){
 	if 	((gen->phil_num < 2) || (gen->phil_num < 0) || (gen->mill_sec_to_die < 0)
 		|| (gen->mill_sec_to_sleep < 0) || (gen->min_meal_to_stop < 0))
 		error("invalid values");
+	
+    //initalise mutex - mutex locks are the forks
+    init_mutex(gen);
+
+	//initalise philosophers
+    init_philo(gen);
+
 	return (1);
 }
 
+void init_philo(t_rules *gen){
+	int	ctr;
 
-void    init_mutex(philo *gen){
-	gen->chopstick = (pthread_mutex_t *)malloc((gen->phil_num)sizeof(pthread_mutex_t *);
-	int ctr = 0;
+	ctr = 0;
+	gen->philo_arr = (t_philo *)malloc(gen->phil_num * sizeof(t_philo));
+
 	while (ctr < gen->phil_num)
 	{
-		pthread_mutex_init(&gen->chopstick[i], 1);
+		gen->philo_arr[ctr].id = ctr;
+		gen->philo_arr[ctr].left_fork = ctr;
+		gen->philo_arr[ctr].right_fork = (ctr + 1) % gen->phil_num;
+		gen->philo_arr[ctr].last_ate = 0;
+		gen->philo_arr[ctr].is_eating = 0;
 		ctr++;
 	}
 }
 
-void    init_threads(t_philo *gen){
+void    init_mutex(t_rules *gen){
+	gen->chopstick = (pthread_mutex_t *)malloc((gen->phil_num)sizeof(pthread_mutex_t *);
+	int ctr = 0;
+	while (ctr < gen->phil_num)
+	{
+		if (!pthread_mutex_init(&gen->chopstick[i], NULL))
+			error("failed mutex init\n") ;
+		ctr++;
+	}
+}
+
+void    init_threads(t_rules *gen){
 	int n;
     pthread_t ph_thread[5]; //each philospher has 1 thread
 
@@ -51,10 +75,3 @@ void    init_threads(t_philo *gen){
     }
 }
 
-void *philos_werk(void *n)
-{
-	int phil = *(int *)n;
-	eating_time();
-		
-
-}

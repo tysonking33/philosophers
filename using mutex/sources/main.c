@@ -2,8 +2,8 @@
 
 int	main(int argc, char **argv)
 {
-    t_philo *gen;
-    gen = (t_philo *)malloc(sizeof(t_philo));
+    t_rules *gen;
+    gen = (t_rules *)malloc(sizeof(t_rules));
     if (!gen)
         return 0;
     
@@ -19,17 +19,17 @@ int	main(int argc, char **argv)
 
 
     //initalise rules
-    if (init_rules(gen, argc, argv) != 1)
+    if (init_all(gen, argc, argv) != 1)
         return 0;
 
-    //initalise mutex - mutex locks are the forks
-    init_mutex(gen);
+
+
 
     //initalise threads
     init_threads(gen);
 
     //jointhreads
-    join_threads();
+    do_your_thing_21();
 }
 
 void * philos(void * n)
