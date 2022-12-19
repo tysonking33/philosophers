@@ -14,6 +14,8 @@ typedef struct s_philo
     int mill_sec_to_eat;
     int mill_sec_to_sleep;
     int min_meal_to_stop;
+    pthread_mutex_t *chopstick;
+
 
 }               t_philo;
 

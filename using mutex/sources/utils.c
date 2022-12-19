@@ -26,14 +26,12 @@ int	init_rules(t_philo *gen, int argc, char **argv){
 }
 
 
-void    init_mutex(t_philo *gen){
-	pthread_mutex_t *chopstick;
-	
-	chopstick = (pthread_mutex_t *)malloc((gen->phil_num)sizeof(pthread_mutex_t *);
+void    init_mutex(philo *gen){
+	gen->chopstick = (pthread_mutex_t *)malloc((gen->phil_num)sizeof(pthread_mutex_t *);
 	int ctr = 0;
 	while (ctr < gen->phil_num)
 	{
-		pthread_mutex_init(&chopstick[i], 1);
+		pthread_mutex_init(&gen->chopstick[i], 1);
 		ctr++;
 	}
 }
@@ -55,6 +53,8 @@ void    init_threads(t_philo *gen){
 
 void *philos_werk(void *n)
 {
+	int phil = *(int *)n;
+	eating_time()
 		
 
 }
