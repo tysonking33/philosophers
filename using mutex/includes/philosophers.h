@@ -10,10 +10,10 @@
 typedef struct s_rules
 {
     int phil_num;
-    int mill_sec_to_die;
     int mill_sec_to_eat;
-    int mill_sec_to_sleep;
     int min_meal_to_stop;
+    int mill_sec_to_sleep;
+    int mill_sec_to_die;
     pthread_mutex_t *chopstick;
     struct s_philo *philo_arr;
 
