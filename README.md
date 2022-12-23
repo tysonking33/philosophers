@@ -12,3 +12,10 @@ concurrency in c (https://www.classes.cs.uchicago.edu/archive/2018/spring/12300-
 
 
 learning about process synchronization (https://www.geeksforgeeks.org/introduction-of-process-synchronization/?ref=lbp)
+
+
+
+
+
+
+thread_philo.cpp (https://osandnetworkingcslab.wordpress.com/implementation-of-dining-philosophers-using-threads/)

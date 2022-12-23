@@ -18,7 +18,7 @@ int	init_all(t_rules *gen, int argc, char **argv){
 		error("invalid values");
 
     gen->philo_arr = NULL;
-    gen->chopstick = NULL;
+    gen->fork_arr = NULL;
 	
     //initalise mutex - mutex locks are the forks
     init_mutex(gen);
@@ -47,11 +47,11 @@ void init_philo(t_rules *gen){
 }
 
 void    init_mutex(t_rules *gen){
-	gen->chopstick = (pthread_mutex_t *)malloc((gen->phil_num)sizeof(pthread_mutex_t *);
+	gen->fork_arr = (pthread_mutex_t *)malloc((gen->phil_num)sizeof(pthread_mutex_t *);
 	int ctr = 0;
 	while (ctr < gen->phil_num)
 	{
-		if (!pthread_mutex_init(&gen->chopstick[i], NULL))
+		if (!pthread_mutex_init(&gen->fork_arr[ctr], NULL))
 			error("failed mutex init\n") ;
 		ctr++;
 	}

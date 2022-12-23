@@ -19,11 +19,11 @@ int	main(int argc, char **argv)
     if (argc == 6)
         gen->min_meal_to_stop = argc[5];
 
-    pthread_mutex_t *chopstick[gen->phil_num];
+    pthread_mutex_t *fork_arr[gen->phil_num];
     int ctr = 0;
     while (ctr < gen->phil_num)
     {
-        pthread_mutex_init(&chopstick[i], 1);
+        pthread_mutex_init(&fork_arr[i], 1);
         ctr++;
     }
     
