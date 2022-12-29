@@ -17,14 +17,14 @@ int	init_all(t_rules *gen, int argc, char **argv){
 		|| (gen->mill_sec_to_sleep < 60) || (gen->min_meal_to_stop < 0))
 		error("invalid values");
 
-    gen->philo_arr = NULL;
-    gen->fork_arr = NULL;
-	
     //initalise mutex - mutex locks are the forks
     init_mutex(gen);
 
 	//initalise philosophers
     init_philo(gen);
+
+	//looping the philosipher array back to the generic structure
+	loop_rules(gen);
 
 	return (1);
 }
@@ -33,28 +33,39 @@ void init_philo(t_rules *gen){
 	int	ctr;
 
 	ctr = 0;
-	gen->philo_arr = (t_philo *)malloc(gen->phil_num * sizeof(t_philo *));
+	//gen->philo_arr = (t_philo *)malloc((gen->phil_num) * sizeof(t_philo *));
 	if (!gen->philo_arr)
 		error("gen->philo_arr, initalisation fail\n");
 
 	while (ctr < gen->phil_num)
 	{
-		gen->philo_arr[ctr].id = ctr;
-		gen->philo_arr[ctr].left_fork = ctr;
-		gen->philo_arr[ctr].right_fork = (ctr + 1) % gen->phil_num;
-		gen->philo_arr[ctr].last_ate = 0;
-		gen->philo_arr[ctr].is_eating = 0;
+		gen->philo_arr[ctr]->id = ctr;
+		gen->philo_arr[ctr]->left_fork = ctr;
+		gen->philo_arr[ctr]->right_fork = (ctr + 1) % gen->phil_num;
+		gen->philo_arr[ctr]->last_ate = 0;
+		gen->philo_arr[ctr]->is_eating = 0;
 		ctr++;
 	}
 }
 
 void    init_mutex(t_rules *gen){
-	gen->fork_arr = (pthread_mutex_t *)malloc((gen->phil_num) * sizeof(pthread_mutex_t *));
+	//gen->fork_arr = (pthread_mutex_t *)malloc((gen->phil_num) * sizeof(pthread_mutex_t *));
 	int ctr = 0;
 	while (ctr < gen->phil_num)
 	{
-		if (!pthread_mutex_init(&gen->fork_arr[ctr], NULL))
+		if (!pthread_mutex_init(gen->fork_arr[ctr], NULL))
 			error("failed mutex init\n");
+		ctr++;
+	}
+}
+
+void	loop_rules(t_rules *gen){
+	int	ctr;
+
+	ctr = 0;
+	while (ctr < gen->phil_num)
+	{
+		gen->philo_arr[ctr]->the_rules = gen;
 		ctr++;
 	}
 }

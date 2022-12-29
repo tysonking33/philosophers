@@ -35,3 +35,7 @@ used:
 when finished, change to:
     ft_printf()
     ft_atoi()
+
+
+
+    
