@@ -13,7 +13,7 @@ int    join_threads(t_rules *gen){
     return 1;
 }
 
-void    routine(void *gen){
+void    routine(t_rules *gen){
     int i;
 
     i = 0;

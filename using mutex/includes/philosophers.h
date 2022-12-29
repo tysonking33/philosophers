@@ -36,7 +36,7 @@ char    *return_message(int type);
 
 /* found in start_thread.c */
 int     join_threads(t_rules *gen);
-void    routine(void *gen);
+void    routine(t_rules *gen);
 
 /* found in routine.c */
 void    pick_up_fork(t_rules *gen, int philo_idx);
