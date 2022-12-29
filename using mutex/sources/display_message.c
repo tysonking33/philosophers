@@ -1,7 +1,7 @@
 #include "../includes/philosophers.h"
 
-void    display_message(t_rules *gen, int i, int type){
-    ft_printf("philosopher %d %s\n", i, return_message(int type));
+void    display_message(int philo_idx, int type){
+    printf("philosopher %d %s\n", philo_idx, return_message(type));
 }
 
 char *return_message(int type)

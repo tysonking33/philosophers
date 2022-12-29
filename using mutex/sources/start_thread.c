@@ -6,9 +6,9 @@ int    join_threads(t_rules *gen){
     while (i < gen->phil_num)
     {
         philo = (void *)(&gen->philo_arr[i]);
-        if (pthread_create(gen->fork_arr[i], NULL, &routine, philo) != 0)
+        if (pthread_create(&gen->fork_arr[i], NULL, &routine, philo) != 0)
             return 0;
-        pthread_join(gen->fork_arr[i], NULL);
+        pthread_join(&gen->fork_arr[i], NULL);
     }
     return 1;
 }
@@ -18,10 +18,10 @@ void    routine(void *gen){
 
     i = 0;
     while (i < gen->phil_num){
-        pick_up_fork(gen, i);
-        eat(gen, i);
-        put_down_fork(gen, i);
-        display_message(gen, i);
+        pick_up_fork(i, 3);
+        eat(i, 1);
+        put_down_fork(i, 4);
+        display_message(i, 5);
         i++;
     }
 }

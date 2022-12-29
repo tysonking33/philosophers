@@ -19,3 +19,19 @@ learning about process synchronization (https://www.geeksforgeeks.org/introducti
 
 
 thread_philo.cpp (https://osandnetworkingcslab.wordpress.com/implementation-of-dining-philosophers-using-threads/)
+
+
+
+
+
+
+
+IN using mutex:
+used:
+    printf()
+    atoi()
+
+
+when finished, change to:
+    ft_printf()
+    ft_atoi()
