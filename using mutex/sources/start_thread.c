@@ -7,7 +7,7 @@ int join_threads(t_rules *gen)
 
     while (i < gen->phil_num)
     {
-        if (pthread_create(&tid/*gen->philo_arr[i]*/, NULL, routine, gen->philo_arr[i]) != 0)
+        if (pthread_create(&tid/*gen->philo_arr[i]*/, NULL, routine, &(gen->philo_arr[i])))
             return 0;
         pthread_join(tid/*gen->philo_arr[i]*/, NULL);
         i++;

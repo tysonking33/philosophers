@@ -3,7 +3,7 @@
 int	main(int argc, char **argv)
 {
     t_rules *gen;
-    gen = (t_rules *)malloc(sizeof(t_rules));
+    gen = (t_rules *)malloc(sizeof(t_rules *));
     if (!gen)
         return 0;
 

@@ -7,16 +7,7 @@
 #include <pthread.h>
 #include <sys/time.h>
 
-typedef struct s_rules
-{
-    int phil_num;
-    int mill_sec_to_eat;
-    int min_meal_to_stop;
-    int mill_sec_to_sleep;
-    int mill_sec_to_die;
-    pthread_mutex_t *fork_arr[1000];
-    struct s_philo *philo_arr[1000];
-}               t_rules;
+struct s_rules;
 
 typedef struct s_philo
 {
@@ -27,6 +18,20 @@ typedef struct s_philo
     int is_eating;
     struct s_rules *the_rules;
 }               t_philo;
+
+
+typedef struct s_rules
+{
+    int phil_num;
+    int mill_sec_to_eat;
+    int min_meal_to_stop;
+    int mill_sec_to_sleep;
+    int mill_sec_to_die;
+    pthread_mutex_t fork_arr[1000];
+    struct s_philo philo_arr[1000];
+}               t_rules;
+
+
 
 /* found in main.c */
 int     main(int argc, char **argv);

@@ -1,4 +1,4 @@
-NAME = push_swap
+NAME = philosophers
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
