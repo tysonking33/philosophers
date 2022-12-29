@@ -1,19 +1,22 @@
 #include "../includes/philosophers.h"
 
-int    join_threads(t_rules *gen){
+int join_threads(t_rules *gen)
+{
     int i = 0;
-    void *philo;
+    pthread_t tid;
+
     while (i < gen->phil_num)
     {
-        philo = (void *)(&gen->philo_arr[i]);
-        if (pthread_create(gen->fork_arr[i], NULL, routine, gen->philo_arr[i]) != 0)
+        if (pthread_create(&tid/*gen->philo_arr[i]*/, NULL, routine, gen->philo_arr[i]) != 0)
             return 0;
-        pthread_join(gen->fork_arr[i], NULL);
+        pthread_join(tid/*gen->philo_arr[i]*/, NULL);
+        i++;
     }
     return 1;
 }
 
-void    *routine(void *gen){
+void *routine(void *gen)
+{
     int i;
     t_philo *phillu;
 
@@ -24,4 +27,6 @@ void    *routine(void *gen){
     eat(phillu, i, 1);
     put_down_fork(phillu, i, 4);
     display_message(i, 5);
+    
+    return ((void *)0);
 }
