@@ -1,6 +1,6 @@
 NAME = philosophers
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -g -pthread
 RM = rm -f
 
 LINKS = -I./includes -L./ft_printf/includes
@@ -28,7 +28,7 @@ $(OBJS): %.o: %.c
 
 $(NAME): $(OBJS)
 	@$(MAKE) re -C ./ft_printf
-	$(CC) $(FLAGS) $(OBJS) ./ft_printf/libftprintf.a ./ft_printf/libft/libft.a -o $(NAME) 
+	$(CC) $(FLAGS) $(OBJS) ./ft_printf/libftprintf.a ./ft_printf/libft/libft.a -o $(NAME) -pthread
 
 clean:
 	rm -f $(OBJS)

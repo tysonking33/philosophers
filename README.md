@@ -24,7 +24,7 @@ thread_philo.cpp (https://osandnetworkingcslab.wordpress.com/implementation-of-d
 using "./philosophers 6 1000 10000 60" as input
 
 
-
+currently the routine goes in order of p1 eat, stop eating, dies, and repeates for p2, p3, p4 ...
 
 
 IN using mutex:

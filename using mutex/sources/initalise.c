@@ -12,7 +12,8 @@ int	init_all(t_rules *gen, int argc, char **argv){
 	else
 		gen->min_meal_to_stop = 0;
 	if 	((gen->phil_num < 2) || (gen->mill_sec_to_die < 60)
-		|| (gen->mill_sec_to_sleep < 60) || (gen->min_meal_to_stop < 0))
+		|| (gen->mill_sec_to_eat < 60) || (gen->mill_sec_to_sleep < 60)
+		|| (gen->min_meal_to_stop < 0))
 		error("invalid values");
 
 
@@ -37,6 +38,10 @@ void init_philo(t_rules *gen){
 	int	ctr;
 
 	ctr = 0;
+<<<<<<< HEAD
+	while (ctr < gen->phil_num)
+	{
+=======
 	//gen->philo_arr = (t_philo *)malloc((gen->phil_num) * sizeof(t_philo *));
 	//if (!gen->philo_arr)
 	//	error("gen->philo_arr, initalisation fail\n");
@@ -49,6 +54,7 @@ void init_philo(t_rules *gen){
 	while (ctr < gen->phil_num)
 	{
 		//gen->philo_arr[ctr] = (t_philo *)malloc(sizeof(t_philo *));
+>>>>>>> 30c9b8554862147d9b110d7df4de57b2781810df
 		gen->philo_arr[ctr].id = ctr;
 		gen->philo_arr[ctr].left_fork = ctr;
 		gen->philo_arr[ctr].right_fork = (ctr + 1) % gen->phil_num;
@@ -59,7 +65,10 @@ void init_philo(t_rules *gen){
 }
 
 void    init_mutex(t_rules *gen){
+<<<<<<< HEAD
+=======
 	//gen->fork_arr = (pthread_mutex_t *)malloc((gen->phil_num) * sizeof(pthread_mutex_t *));
+>>>>>>> 30c9b8554862147d9b110d7df4de57b2781810df
 	int ctr;
 	
 	ctr = 0;

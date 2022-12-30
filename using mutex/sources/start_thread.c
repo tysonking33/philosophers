@@ -6,10 +6,14 @@ int join_threads(t_rules *gen)
     pthread_t tid;
 
     while (i < gen->phil_num)
+<<<<<<< HEAD
+	{
+=======
     {
+>>>>>>> 30c9b8554862147d9b110d7df4de57b2781810df
         if (pthread_create(&tid/*gen->philo_arr[i]*/, NULL, routine, &(gen->philo_arr[i])))
             return 0;
-        pthread_join(tid/*gen->philo_arr[i]*/, NULL);
+		pthread_join(tid/*gen->philo_arr[i]*/, NULL);
         i++;
     }
     return 1;
@@ -17,16 +21,14 @@ int join_threads(t_rules *gen)
 
 void *routine(void *gen)
 {
-    int i;
     t_philo *phillu;
 
-    i = 0;
     phillu = (t_philo *)malloc(sizeof(t_philo *));
     phillu = (t_philo *)gen;
-    pick_up_fork(phillu, i, 3);
-    eat(phillu, i, 1);
-    put_down_fork(phillu, i, 4);
-    display_message(i, 5);
+	pick_up_fork(phillu, phillu->id, 3);
+    eat(phillu, phillu->id, 1);
+    put_down_fork(phillu, phillu->id, 4);
+    display_message(phillu->id, 5);
     
     return ((void *)0);
 }

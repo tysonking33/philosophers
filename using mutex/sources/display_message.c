@@ -13,7 +13,7 @@ char *return_message(int type)
     else if (type == 3)
         return (" has taken a fork\n");
     else if (type == 4)
-        return (" is thinking\n");
+        return (" has put down the dork, aka is thinking\n");
     else
         return (" died\n");
 }
