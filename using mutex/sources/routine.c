@@ -10,6 +10,7 @@ void    pick_up_fork(t_philo *gen, int philo_idx, int type){
 void    eat(t_philo *gen, int philo_idx, int type)
 {
 	pthread_mutex_lock(&gen->mutex);
+	gen->the_rules->philo_arr[philo_idx].is_eating = 1;
 	usleep(gen->the_rules->mill_sec_to_sleep);
 	display_message(philo_idx, type);
 }
