@@ -16,6 +16,7 @@ typedef struct s_philo
     int right_fork;
     int last_ate;
     int is_eating;
+	pthread_mutex_t	mutex;
     struct s_rules *the_rules;
 }               t_philo;
 
