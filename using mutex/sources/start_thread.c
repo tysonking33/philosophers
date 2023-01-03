@@ -4,18 +4,14 @@ int join_threads(t_rules *gen)
 {
     int i = 0;
     pthread_t tid;
-
+	
     while (i < gen->phil_num)
-<<<<<<< HEAD
 	{
-=======
-    {
->>>>>>> 30c9b8554862147d9b110d7df4de57b2781810df
         if (pthread_create(&tid/*gen->philo_arr[i]*/, NULL, routine, &(gen->philo_arr[i])))
-            return 0;
+			return 0;
 		pthread_join(tid/*gen->philo_arr[i]*/, NULL);
         i++;
-    }
+	}
     return 1;
 }
 
