@@ -4,7 +4,6 @@ void    pick_up_fork(t_philo *gen, int philo_idx, int type){
 	pthread_mutex_lock(&gen->the_rules->fork_arr[philo_idx]);
 	pthread_mutex_lock(&gen->the_rules->fork_arr[(philo_idx
 				+ gen->the_rules->phil_num - 1) % (gen->the_rules->phil_num)]);
-	display_message(philo_idx, type);
 	//printf("forks locked: %d, %d\n\n", philo_idx, (philo_idx + gen->the_rules->phil_num - 1) % (gen->the_rules->phil_num));
 	display_message(philo_idx, type);
 }

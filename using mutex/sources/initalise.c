@@ -38,17 +38,6 @@ void init_philo(t_rules *gen){
 	int	ctr;
 
 	ctr = 0;
-	//while (ctr < gen->phil_num)
-	//{
-	//gen->philo_arr = (t_philo *)malloc((gen->phil_num) * sizeof(t_philo *));
-	//if (!gen->philo_arr)
-	//	error("gen->philo_arr, initalisation fail\n");
-	
-	printf("ctr: %d\n", ctr);
-	//printf("gen->philo_arr[ctr]: %d\n", gen->philo_arr[ctr]->id);
-	
-	if (gen)
-		printf("yehhhhh\n");
 	while (ctr < gen->phil_num)
 	{
 		//gen->philo_arr[ctr] = (t_philo *)malloc(sizeof(t_philo *));
@@ -68,7 +57,8 @@ void    init_mutex(t_rules *gen){
 	ctr = 0;
 	while (ctr < gen->phil_num)
 	{
-		pthread_mutex_init(&gen->fork_arr[ctr], NULL);
+		if (pthread_mutex_init(&gen->fork_arr[ctr], NULL))
+			error("pthread_mutex_init failed\n");
 		ctr++;
 	}
 }

@@ -6,6 +6,7 @@ int     destroy_threads(t_rules *gen){
     while (i < gen->phil_num)
 	{
         pthread_mutex_destroy(&gen->fork_arr[i]);
+		printf("destroyed fork %d\n", i);
 		i++;
 	}
     return 1;

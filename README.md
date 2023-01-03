@@ -19,6 +19,7 @@ learning about process synchronization (https://www.geeksforgeeks.org/introducti
 
 
 thread_philo.cpp (https://osandnetworkingcslab.wordpress.com/implementation-of-dining-philosophers-using-threads/)
+	found in Using_mutext_test/thread_philo.cpp
 
 
 using "./philosophers 6 1000 10000 60" as input
