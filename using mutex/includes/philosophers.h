@@ -55,6 +55,7 @@ int     destroy_threads(t_rules *gen);
 
 /* found in utils.c */
 void    error(char *s);
+long long int	timestamp(void);
 
 /* found in initalise.c */
 int     init_all(t_rules *gen, int argc, char **argv);

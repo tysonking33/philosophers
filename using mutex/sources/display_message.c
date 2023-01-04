@@ -14,6 +14,8 @@ char *return_message(int type)
         return (" has taken a fork\n");
     else if (type == 4)
         return (" has finished eating, put down the dork, aka is thinking\n");
+	else if (type == 5)
+		return (" is thinking\n");
     else
         return (" died\n");
 }

@@ -6,3 +6,11 @@ void error(char *s)
 	exit(1);
 }
 
+long long int   timestamp(void){
+	struct	timeval	current_time;
+	long long int	timeStamp;
+
+	gettimeofday(&current_time, NULL);
+	timeStamp = current_time.tv_usec;
+	return (timeStamp);
+}
