@@ -16,10 +16,7 @@ typedef struct s_philo
     int right_fork;
     int last_ate;
     int is_eating;
-	int is_full;
-	char *state;
-	pthread_mutex_t	critical_region_mutex;
-	pthread_mutex_t	output_mutex;
+	pthread_mutex_t	mutex;
     struct s_rules *the_rules;
 }               t_philo;
 
@@ -45,14 +42,8 @@ void    display_message(int philo_idx, int type);
 char    *return_message(int type);
 
 /* found in start_thread.c */
-int     join_threads(t_rules *gen);
-void    *routine(void  *gen);
 
 /* found in routine.c */
-void    thinking(t_philo *gen, int philo_idx, int type);
-void    pick_up_fork(t_philo *gen, int philo_idx, int type);
-void    eat(t_philo *gen, int philo_idx, int type);
-void    put_down_fork(t_philo *gen, int philo_idx, int type);
 
 /* found in destroy_threads.c */
 int     destroy_threads(t_rules *gen);

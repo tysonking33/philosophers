@@ -1,23 +1,26 @@
 #include "../includes/philosophers.h"
 
+void	thinking(t_philo *gen, int philo_idx, int type){
+	int	thinking_time;
+
+	thinking_time = 400;
+	pthread_mutex_lock(&gen->output_mutex);
+	display_message(philo_idx, type);
+	usleep(thinking_time);
+}
+
 void    pick_up_fork(t_philo *gen, int philo_idx, int type){
-	pthread_mutex_lock(&gen->the_rules->fork_arr[philo_idx]);
-	pthread_mutex_lock(&gen->the_rules->fork_arr[gen->the_rules->philo_arr[philo_idx].right_fork]);
-	//printf("forks locked: %d, %d\n\n", philo_idx, gen->the_rules->philo_arr[philo_idx].right_fork);
+	pthread_mutex_lock(&gen->critical_region_mutex);
+	gen->state = "Hungry";
+	pthread_mutex_lock(&gen->output_mutex);
+
 	display_message(philo_idx, type);
 }
 
-void    eat(t_philo *gen, int philo_idx, int type)
-{
-	pthread_mutex_lock(&gen->mutex);
-	gen->the_rules->philo_arr[philo_idx].is_eating = 1;
-	usleep(gen->the_rules->mill_sec_to_sleep);
+void    eat(t_philo *gen, int philo_idx, int type){
 	display_message(philo_idx, type);
 }
 
 void    put_down_fork(t_philo *gen, int philo_idx, int type){
-	pthread_mutex_unlock(&gen->the_rules->fork_arr[philo_idx]);
-	pthread_mutex_unlock(&gen->the_rules->fork_arr[gen->the_rules->philo_arr[philo_idx].right_fork]);
-    display_message(philo_idx, type);
-	//printf("forks unlocked: %d, %d\n\n", philo_idx, gen->the_rules->philo_arr[philo_idx].right_fork);
+	display_message(philo_idx, type);
 }
