@@ -1,26 +1,57 @@
 #include "../includes/philosophers.h"
 
 void	thinking(t_philo *gen, int philo_idx, int type){
-	int	thinking_time;
+	int	think_time;
 
-	thinking_time = 400;
-	pthread_mutex_lock(&gen->output_mutex);
+	think_time = 400;
+	{
+		pthread_mutex_lock(&gen->the_rules->output_mutex);
+	}
+	usleep(400);
 	display_message(philo_idx, type);
-	usleep(thinking_time);
 }
 
 void    pick_up_fork(t_philo *gen, int philo_idx, int type){
-	pthread_mutex_lock(&gen->critical_region_mutex);
-	gen->state = "Hungry";
-	pthread_mutex_lock(&gen->output_mutex);
-
+	pthread_mutex_lock(&gen->the_rules->critical_region_mutex);
+	gen->state = 'H';
+	{
+		pthread_mutex_lock(&gen->the_rules->output_mutex);
+	}
+	test(gen, philo_idx);
+	pthread_mutex_lock(&gen->the_rules->fork_arr[philo_idx]);
+	pthread_mutex_lock(&gen->the_rules->fork_arr[(philo_idx - 1) % gen->the_rules->phil_num]);
 	display_message(philo_idx, type);
 }
 
 void    eat(t_philo *gen, int philo_idx, int type){
+	pthread_mutex_lock(&gen->the_rules->output_mutex);
+	usleep(gen->the_rules->mill_sec_to_sleep);
 	display_message(philo_idx, type);
 }
 
 void    put_down_fork(t_philo *gen, int philo_idx, int type){
+	pthread_mutex_lock(&gen->the_rules->critical_region_mutex);
+	gen->state = 'T';
+	test(find_left_N(gen, philo_idx), philo_idx);
+	test(find_right_N(gen, philo_idx), philo_idx);
 	display_message(philo_idx, type);
+}
+
+void	test(t_philo *gen, int philo_idx){
+	if (gen->state == 'H'
+			&& gen->the_rules->philo_arr[find_left_N(gen, philo_idx)].state != 'E'
+			&& gen->the_rules->philo_arr[find_right_N(gen, philo_idx)].state != 'E')
+	{
+		gen->state = 'E';
+		pthread_mutex_unlock(&gen->the_rules->fork_arr[philo_idx]);
+		pthread_mutex_unlock(&gen->the_rules->fork_arr[(philo_idx - 1) % gen->the_rules->phil_num]);
+	}
+}
+
+int		find_left_N(t_philo *gen, int philo_idx){
+	return ((gen->the_rules->phil_num + philo_idx - 1) % philo_idx);
+}
+
+int		find_right_N(t_philo *gen, int philo_idx){
+	return ((gen->the_rules->phil_num + 1) % philo_idx);
 }

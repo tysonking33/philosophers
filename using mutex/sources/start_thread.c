@@ -23,15 +23,17 @@ void *routine(void *gen)
     phillu = (t_philo *)gen;
 	while (1)
 	{
-		//printf("test1\n");
+		printf("test1\n");
 		display_message(phillu->id, 5);
+		printf("a\n");
 		thinking(phillu, phillu->id, 5);
+		printf("b\n");
 		pick_up_fork(phillu, phillu->id, 3);
-		//printf("test2\n");
+		printf("test2\n");
 		eat(phillu, phillu->id, 1);
-		//printf("test3\n");
+		printf("test3\n");
 		put_down_fork(phillu, phillu->id, 4);
-		//printf("test4\n");
+		printf("test4\n");
 		display_message(phillu->id, 5);
 	}
     

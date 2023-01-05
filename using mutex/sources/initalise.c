@@ -40,19 +40,17 @@ void init_philo(t_rules *gen){
 	ctr = 0;
 	while (ctr < gen->phil_num)
 	{
-		//gen->philo_arr[ctr] = (t_philo *)malloc(sizeof(t_philo *));
-		gen->philo_arr[ctr].state = malloc(sizeof(char *));
-		gen->philo_arr[ctr].state = "Hungry";
+		gen->philo_arr[ctr].state = 'H';
 		gen->philo_arr[ctr].id = ctr;
 		gen->philo_arr[ctr].left_fork = ctr;
 		gen->philo_arr[ctr].right_fork = (ctr + gen->phil_num - 1) % gen->phil_num;
 		gen->philo_arr[ctr].last_ate = 0;
 		gen->philo_arr[ctr].is_eating = 0;
 		gen->philo_arr[ctr].is_full = 0;
-		pthread_mutex_init(&gen->philo_arr[ctr].critical_region_mutex, NULL);
-		pthread_mutex_init(&gen->philo_arr[ctr].output_mutex, NULL);
 		ctr++;
 	}
+	pthread_mutex_init(&gen->critical_region_mutex, NULL);
+	pthread_mutex_init(&gen->output_mutex, NULL);
 }
 
 void    init_mutex(t_rules *gen){
