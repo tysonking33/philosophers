@@ -46,7 +46,8 @@ void init_philo(t_rules *gen){
 		gen->philo_arr[ctr].right_fork = (ctr + gen->phil_num - 1) % gen->phil_num;
 		gen->philo_arr[ctr].last_ate = 0;
 		gen->philo_arr[ctr].is_eating = 0;
-		gen->philo_arr[ctr].is_full = 0;
+		gen->philo_arr[ctr].is_working = 0;
+
 		ctr++;
 	}
 	pthread_mutex_init(&gen->critical_region_mutex, NULL);

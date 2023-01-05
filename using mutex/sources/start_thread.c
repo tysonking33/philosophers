@@ -21,7 +21,7 @@ void *routine(void *gen)
 
     phillu = (t_philo *)malloc(sizeof(t_philo *));
     phillu = (t_philo *)gen;
-	while (1)
+	while (phillu->is_working == 0)
 	{
 		printf("test1\n");
 		display_message(phillu->id, 5);

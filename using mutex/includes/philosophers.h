@@ -17,7 +17,7 @@ typedef struct s_philo
     int right_fork;
     int last_ate;
     int is_eating;
-	int is_full;
+	int is_working;
 	char state;
     struct s_rules *the_rules;
 }               t_philo;
