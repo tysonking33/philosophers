@@ -24,6 +24,7 @@ void    pick_up_fork(t_philo *gen, int philo_idx, int type){
 	display_message(philo_idx, type);
 	pthread_mutex_unlock(&gen->the_rules->critical_region_mutex);
 	pthread_mutex_unlock(&gen->the_rules->output_mutex);
+	acquire(gen, philo_idx);
 }
 
 void    eat(t_philo *gen, int philo_idx, int type){
@@ -61,4 +62,10 @@ int		find_left_N(t_philo *gen, int philo_idx){
 
 int		find_right_N(t_philo *gen, int philo_idx){
 	return ((philo_idx + 1) % gen->the_rules->phil_num);
+}
+
+void	acquire(t_philo *gen, int philo_idx){
+	if (!(pthread_mutex_unlock(&gen->the_rules->fork_arr[philo_idx])) || !(pthread_mutex_lock(&gen->the_rules->fork_arr[(philo_idx + gen->the_rules->phil_num - 1) % gen->the_rules->phil_num]))){
+		gen->is_working = 1;
+	}
 }

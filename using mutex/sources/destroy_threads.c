@@ -9,5 +9,10 @@ int     destroy_threads(t_rules *gen){
 		printf("destroyed fork %d\n", i);
 		i++;
 	}
+	pthread_mutex_destroy(&gen->critical_region_mutex);
+	printf("destroyed critical_region_mutex\n");
+	pthread_mutex_destroy(&gen->output_mutex);
+	printf("destroyed output_mutex\n");
+
     return 1;
 }

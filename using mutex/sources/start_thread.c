@@ -24,17 +24,13 @@ void *routine(void *gen)
 	while (phillu->is_working == 0)
 	{
 		printf("test1\n");
-		display_message(phillu->id, 5);
-		printf("a\n");
 		thinking(phillu, phillu->id, 5);
-		printf("b\n");
-		pick_up_fork(phillu, phillu->id, 3);
 		printf("test2\n");
-		eat(phillu, phillu->id, 1);
+		pick_up_fork(phillu, phillu->id, 3);
 		printf("test3\n");
-		put_down_fork(phillu, phillu->id, 4);
+		eat(phillu, phillu->id, 1);
 		printf("test4\n");
-		display_message(phillu->id, 5);
+		put_down_fork(phillu, phillu->id, 4);
 	}
     
     return ((void *)0);

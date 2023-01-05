@@ -57,6 +57,7 @@ void    put_down_fork(t_philo *gen, int philo_idx, int type);
 void    test(t_philo *gen, int philo_idx);
 int     find_left_N(t_philo *gen, int philo_idx);
 int     find_right_N(t_philo *gen, int philo_idx);
+void    acquire(t_philo *gen, int philo_idx);
 
 /* found in destroy_threads.c */
 int     destroy_threads(t_rules *gen);
