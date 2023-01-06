@@ -13,11 +13,9 @@ struct s_rules;
 typedef struct s_philo
 {
     int id;
-    int left_fork;
-    int right_fork;
     int last_ate;
-    int is_eating;
 	int is_working;
+	int	meal_count;
 	char state;
     struct s_rules *the_rules;
 }               t_philo;
@@ -27,9 +25,10 @@ typedef struct s_rules
 {
     int phil_num;
     int mill_sec_to_eat;
-    int min_meal_to_stop;
+    int max_meals;
     int mill_sec_to_sleep;
-    int mill_sec_to_die;
+	int mill_sec_to_die;
+	long long int	inital_time;
 	pthread_mutex_t critical_region_mutex;
 	pthread_mutex_t output_mutex;
     pthread_mutex_t fork_arr[1000];
@@ -42,7 +41,7 @@ typedef struct s_rules
 int     main(int argc, char **argv);
 
 /* found in display_message.c */
-void    display_message(int philo_idx, int type);
+void    display_message(t_rules *gen, int philo_idx, int type);
 char    *return_message(int type);
 
 /* found in start_thread.c */
@@ -50,14 +49,10 @@ int     join_threads(t_rules *gen);
 void    *routine(void  *gen);
 
 /* found in routine.c */
-void    thinking(t_philo *gen, int philo_idx, int type);
+void    sleeping(t_philo *gen, int philo_idx, int type);
 void    pick_up_fork(t_philo *gen, int philo_idx, int type);
 void    eat(t_philo *gen, int philo_idx, int type);
 void    put_down_fork(t_philo *gen, int philo_idx, int type);
-void    test(t_philo *gen, int philo_idx);
-int     find_left_N(t_philo *gen, int philo_idx);
-int     find_right_N(t_philo *gen, int philo_idx);
-void    acquire(t_philo *gen, int philo_idx);
 
 /* found in destroy_threads.c */
 int     destroy_threads(t_rules *gen);
