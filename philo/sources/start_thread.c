@@ -46,7 +46,10 @@ void	alive(t_rules *gen){
 		while (c < gen->phil_num){
 			if ((timestamp() - gen->philo_arr[c].last_ate) > gen->mill_sec_to_die){
 				display_message(&gen->philo_arr[c], c, 6);
-				ft_printf("%lld, %ld\n", timestamp(), gen->philo_arr[c].last_ate);
+				printf("%lld, %ld\n", timestamp(), gen->philo_arr[c].last_ate);
+				printf("id: %d, last_ate: %ld, is_working: %d, meal_count: %d, inital_time: %lld, state: %c, sec_to_eat: %d, sec_to_die: %d, sec_to_sleep: %d\n", 
+                gen->philo_arr[c].id, gen->philo_arr[c].last_ate, gen->philo_arr[c].is_working, gen->philo_arr[c].meal_count, gen->philo_arr[c].inital_time, gen->philo_arr[c].state, 
+                gen->mill_sec_to_eat, gen->mill_sec_to_die, gen->mill_sec_to_sleep);
 				i = 1;
 				exit(0);
 			}

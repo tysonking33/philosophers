@@ -7,6 +7,7 @@
 #include <pthread.h>
 #include <sys/time.h>
 #include <string.h>
+# include "../ft_printf/includes/ft_printf.h"
 
 struct s_rules;
 

@@ -7,12 +7,11 @@ void error(char *s)
 }
 
 long long int   timestamp(void){
+
 	struct	timeval	current_time;
-	long long int	timeStamp;
 
 	gettimeofday(&current_time, NULL);
-	timeStamp = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
-	return (timeStamp);
+	return (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
 }
 
 long	total_time(t_philo *gen)

@@ -10,7 +10,7 @@ int	init_all(t_rules *gen, int argc, char **argv){
     if (argc == 6)
         gen->max_meals= atoi(argv[5]);
 	else
-		gen->max_meals = 0;
+		gen->max_meals = 9999;
 	if 	((gen->phil_num < 2) || (gen->mill_sec_to_die < 60)
 		|| (gen->mill_sec_to_eat < 60) || (gen->mill_sec_to_sleep < 60))
 		error("invalid values");
