@@ -15,22 +15,12 @@ int	init_all(t_rules *gen, int argc, char **argv){
 		|| (gen->mill_sec_to_eat < 60) || (gen->mill_sec_to_sleep < 60)
 		|| (gen->min_meal_to_stop < 0))
 		error("invalid values");
-
-
-	printf("init all_1\n");
-
     //initalise mutex - mutex locks are the forks
     init_mutex(gen);
-
-	printf("init all_2\n");
 	//initalise philosophers
     init_philo(gen);
-
-	printf("init all_3\n");
-	//looping the philosipher array back to the generic structure
+	//looping the philosophers array back to the generic structure
 	loop_rules(gen);
-	printf("init all_4\n");
-
 	return (1);
 }
 
@@ -40,7 +30,6 @@ void init_philo(t_rules *gen){
 	ctr = 0;
 	while (ctr < gen->phil_num)
 	{
-		//gen->philo_arr[ctr] = (t_philo *)malloc(sizeof(t_philo *));
 		gen->philo_arr[ctr].id = ctr;
 		gen->philo_arr[ctr].left_fork = ctr;
 		gen->philo_arr[ctr].right_fork = (ctr + gen->phil_num - 1) % gen->phil_num;
@@ -52,7 +41,6 @@ void init_philo(t_rules *gen){
 }
 
 void    init_mutex(t_rules *gen){
-	//gen->fork_arr = (pthread_mutex_t *)malloc((gen->phil_num) * sizeof(pthread_mutex_t *));
 	int ctr;
 
 	ctr = 0;
