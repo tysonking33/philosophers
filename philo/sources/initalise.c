@@ -11,11 +11,11 @@ int	init_all(t_rules *gen, int argc, char **argv){
         gen->max_meals= atoi(argv[5]);
 	else
 		gen->max_meals = 9999;
-	if 	((gen->phil_num < 2) || (gen->mill_sec_to_die < 60)
+	if 	((gen->phil_num < 1) || (gen->phil_num > 200) || (gen->mill_sec_to_die < 60)
 		|| (gen->mill_sec_to_eat < 60) || (gen->mill_sec_to_sleep < 60))
-		error("invalid values");
+		error("invalid values2");
 	if ((gen->max_meals) && (gen->max_meals < 0))
-		error("invalid values");
+		error("invalid values1");
 	gen->routine_count = 0;
     //initalise mutex - mutex locks are the forks
     init_mutex(gen);
