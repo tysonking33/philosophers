@@ -1,0 +1,30 @@
+here
+forks picked up: 3, 4
+0 philosopher 3  has taken a fork
+
+0 philosopher 4  is sleeping
+
+0 philosopher 2  is sleeping
+
+102 philosopher 4  is thinking
+
+102 philosopher 2  is thinking
+
+202 philosopher 3  is eating
+
+philosopher 3 ate 1 times
+forks put down: 3, 4
+202 philosopher 3  has finished eating, put down the dork, aka is thinking
+
+202 philosopher 3  is sleeping
+
+here
+forks picked up: 2, 3
+202 philosopher 2  has taken a fork
+
+306 philosopher 3  is thinking
+
+310 philosopher 2  died
+
+1673328305704, 1673328305394
+id: 3, last_ate: 1673328305394, is_working: 0, meal_count: 1, inital_time: 1673328305394, state: H, sec_to_eat: 200, sec_to_die: 310, sec_to_sleep: 100

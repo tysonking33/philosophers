@@ -31,7 +31,6 @@ void *routine(void *gen)
 		sleeping(phillu, phillu->id, 2);
 	else
 		pick_up_fork(phillu, phillu->id, 3);
-    
     return ((void *)0);
 }
 
@@ -43,13 +42,13 @@ void	alive(t_rules *gen){
 	while (i == 0){
 		c = 0;
 		while (c < gen->phil_num){
+            usleep(100);
 			if ((timestamp() - gen->philo_arr[c].last_ate) >= gen->mill_sec_to_die){
 				display_message(&gen->philo_arr[c], c, 6);
-				printf("%lld, %ld\n", timestamp(), gen->philo_arr[c].last_ate);
-                usleep(100);
+				printf("%lld, %lld, time since last ate: %lld\n", timestamp(), gen->philo_arr[c].last_ate, (timestamp() - gen->philo_arr[c].last_ate));
 
-				printf("id: %d, last_ate: %ld, is_working: %d, meal_count: %d, inital_time: %lld, state: %c, sec_to_eat: %d, sec_to_die: %d, sec_to_sleep: %d\n", 
-                gen->philo_arr[c].id, gen->philo_arr[c].last_ate, gen->philo_arr[c].is_working, gen->philo_arr[c].meal_count, gen->philo_arr[c].inital_time, gen->philo_arr[c].state, 
+				printf("id: %d, last_ate: %lld, is_working: %d, meal_count: %d, inital_time: %lld, sec_to_eat: %d, sec_to_die: %d, sec_to_sleep: %d\n", 
+                gen->philo_arr[c].id, gen->philo_arr[c].last_ate, gen->philo_arr[c].is_working, gen->philo_arr[c].meal_count, gen->philo_arr[c].inital_time,  
                 gen->mill_sec_to_eat, gen->mill_sec_to_die, gen->mill_sec_to_sleep);
 				i = 1;
 				exit(0);
@@ -57,5 +56,4 @@ void	alive(t_rules *gen){
 			c++;
 		}
 	}
-
 }
