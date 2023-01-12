@@ -56,8 +56,6 @@ delayed by more than 10 ms is unacceptable.
 Ensure philosophers die at the right time, that they don't steal
 forks, and so forth.
 
-1 800 200 200
-
 [philo-Test #1]: Given 4 310 200 100 arguments to philo, a philosopher should die !
 [philo-Test #2]: Given 4 410 200 200 arguments to philo, no philosopher should die !
 [philo-Test #3]: Given 4 800 200 200 arguments to philo, no philosopher should die !
