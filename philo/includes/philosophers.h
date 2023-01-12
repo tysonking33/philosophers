@@ -28,7 +28,6 @@ typedef struct s_rules
     int max_meals;
     int mill_sec_to_sleep;
 	int mill_sec_to_die;
-	int	routine_count;
 	pthread_mutex_t critical_region_mutex;
 	pthread_mutex_t output_mutex;
     pthread_mutex_t fork_arr[1000];

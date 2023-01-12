@@ -8,7 +8,7 @@ int	init_all(t_rules *gen, int argc, char **argv){
     gen->mill_sec_to_eat = atoi(argv[3]);
     gen->mill_sec_to_sleep = atoi(argv[4]);
     if (argc == 6)
-        gen->max_meals= atoi(argv[5]);
+        gen->max_meals = atoi(argv[5]);
 	else
 		gen->max_meals = 9999;
 	if 	((gen->phil_num < 1) || (gen->phil_num > 200) || (gen->mill_sec_to_die < 60)
@@ -16,16 +16,9 @@ int	init_all(t_rules *gen, int argc, char **argv){
 		error("invalid values2");
 	if ((gen->max_meals) && (gen->max_meals < 0))
 		error("invalid values1");
-	gen->routine_count = 0;
-    //initalise mutex - mutex locks are the forks
     init_mutex(gen);
-
-	//initalise philosophers
     init_philo(gen);
-
-	//looping the philosopher array back to the generic structure
 	loop_rules(gen);
-
 	return (1);
 }
 
@@ -47,7 +40,7 @@ void init_philo(t_rules *gen){
 
 void    init_mutex(t_rules *gen){
 	int ctr;
-	
+
 	ctr = 0;
 	while (ctr < gen->phil_num)
 	{
@@ -55,9 +48,6 @@ void    init_mutex(t_rules *gen){
 			error("pthread_mutex_init failed\n");
 		ctr++;
 	}
-    /*pthread_mutex_lock(&gen->fork_arr[0]);
-    pthread_mutex_lock(&gen->fork_arr[ctr]);
-    printf("initially locked fork: %d\n\n\n\n\n\n", ctr);*/
 }
 
 void	loop_rules(t_rules *gen){
