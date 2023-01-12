@@ -15,10 +15,8 @@ typedef struct s_philo
 {
     int id;
     long long int last_ate;
-	int is_working;
 	int	meal_count;
 	long long int   inital_time;
-	//char state;
     struct s_rules *the_rules;
 }               t_philo;
 

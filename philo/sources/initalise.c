@@ -35,11 +35,9 @@ void init_philo(t_rules *gen){
 	ctr = 0;
 	while (ctr < gen->phil_num)
 	{
-		//gen->philo_arr[ctr].state = 'H';
 		gen->philo_arr[ctr].id = ctr + 1;
 		gen->philo_arr[ctr].last_ate = timestamp();
 		gen->philo_arr[ctr].inital_time = timestamp();
-		gen->philo_arr[ctr].is_working = 0;
 		gen->philo_arr[ctr].meal_count = 0;
 		ctr++;
 	}
@@ -57,10 +55,9 @@ void    init_mutex(t_rules *gen){
 			error("pthread_mutex_init failed\n");
 		ctr++;
 	}
-    //pthread_mutex_lock(&gen->fork_arr[0]);
-    //pthread_mutex_lock(&gen->fork_arr[ctr + 1]);
-    pthread_mutex_lock(&gen->fork_arr[0]);
+    /*pthread_mutex_lock(&gen->fork_arr[0]);
     pthread_mutex_lock(&gen->fork_arr[ctr]);
+    printf("initially locked fork: %d\n\n\n\n\n\n", ctr);*/
 }
 
 void	loop_rules(t_rules *gen){

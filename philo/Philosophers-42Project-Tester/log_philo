@@ -1,30 +1,65 @@
-here
-forks picked up: 3, 4
-0 philosopher 3  has taken a fork
+0 philosopher 1  is sleeping
 
-0 philosopher 4  is sleeping
-
-0 philosopher 2  is sleeping
-
-102 philosopher 4  is thinking
-
-102 philosopher 2  is thinking
-
-202 philosopher 3  is eating
-
-philosopher 3 ate 1 times
-forks put down: 3, 4
-202 philosopher 3  has finished eating, put down the dork, aka is thinking
-
-202 philosopher 3  is sleeping
-
-here
+forks tried to picked up: 2, 3
 forks picked up: 2, 3
-202 philosopher 2  has taken a fork
 
-306 philosopher 3  is thinking
+forks tried to picked up: 4, 0
+0 philosopher 2  has taken a fork
 
-310 philosopher 2  died
+0 philosopher 3  is sleeping
 
-1673328305704, 1673328305394
-id: 3, last_ate: 1673328305394, is_working: 0, meal_count: 1, inital_time: 1673328305394, state: H, sec_to_eat: 200, sec_to_die: 310, sec_to_sleep: 100
+206 philosopher 1  is thinking
+
+forks tried to picked up: 1, 2
+206 philosopher 3  is thinking
+
+forks tried to picked up: 3, 4
+206 philosopher 2  is eating
+
+philosopher 2 ate 1 times
+forks tried to put down: 2, 3
+forks put down: 2, 3
+
+206 philosopher 2  has finished eating, put down the dork, aka is thinking
+
+206 philosopher 2  is sleeping
+
+forks picked up: 1, 2
+
+206 philosopher 1  has taken a fork
+
+forks picked up: 3, 4
+
+206 philosopher 3  has taken a fork
+
+410 philosopher 4  died
+
+410 philosopher 3  is eating
+
+1673490982462, 1673490982052, time since last ate: 410
+id: 4, last_ate: 1673490982052, is_working: 0, meal_count: 0, inital_time: 1673490982052, sec_to_eat: 200, sec_to_die: 410, sec_to_sleep: 200
+philosopher 3 ate 1 times
+forks tried to put down: 3, 4
+forks put down: 3, 4
+
+410 philosopher 3  has finished eating, put down the dork, aka is thinking
+
+410 philosopher 3  is sleeping
+
+410 philosopher 2  is thinking
+
+forks tried to picked up: 2, 3
+410 philosopher 1  is eating
+
+philosopher 1 ate 1 times
+forks tried to put down: 1, 2
+forks put down: 1, 2
+
+410 philosopher 1  has finished eating, put down the dork, aka is thinking
+
+410 philosopher 1  is sleeping
+
+forks picked up: 2, 3
+
+410 philosopher 2  has taken a fork
+
